@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 3] — Model definitions
+- `src/model.py`: EfficientNet-B0 / ResNet-18 builders with `Linear(*, 1)` heads,
+  freeze / unfreeze-last-blocks helpers, frozen-BatchNorm handling, Grad-CAM target layers,
+  self-describing checkpoint save/load
+- `docs/03_model_architecture.md` (CNN recap, compound scaling, MBConv/SE, residual blocks, parameter counts)
+
 ## [Module 2] — Exploratory Data Analysis
 - `src/eda.py`: image scan (size, mode, corruption via `verify()`, MD5 duplicates), class balance,
   sample grids, file-size shortcut check, mean face and mean Fourier spectrum
