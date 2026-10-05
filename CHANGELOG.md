@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 6] — Grad-CAM explainability
+- `src/gradcam.py`: `GradCAMExplainer` (pytorch-grad-cam, binary single-logit targets),
+  hand-written `manual_gradcam` (verified identical to the library), heatmap grids for correctly
+  classified real/fake faces and for misclassified images
+- `notebooks/04_gradcam.ipynb`
+- `docs/06_gradcam.md`
+
 ## [Module 5] — Evaluation & error analysis
 - `src/evaluate.py`: test-set predictions, classification report, accuracy/precision/recall/F1/ROC-AUC,
   confusion matrices, shared ROC plot, model comparison CSV, most-confident-mistakes grid + CSV
