@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 5] — Evaluation & error analysis
+- `src/evaluate.py`: test-set predictions, classification report, accuracy/precision/recall/F1/ROC-AUC,
+  confusion matrices, shared ROC plot, model comparison CSV, most-confident-mistakes grid + CSV
+- `notebooks/03_evaluation.ipynb`
+- `docs/05_evaluation.md`
+
 ## [Module 4] — Training pipeline
 - `src/train.py`: two-phase transfer learning (frozen head warm-up → fine-tune last 2 blocks),
   BCEWithLogitsLoss, Adam, ReduceLROnPlateau, best-by-val-loss checkpoint, `--resume` from
