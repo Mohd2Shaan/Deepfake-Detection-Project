@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Fix] Kaggle dataset detection
+- Dataset lookup moved into `src/config.py` (`find_kaggle_dataset`) and searches `/kaggle/input` at any
+  depth — Kaggle now mounts datasets under `/kaggle/input/datasets/<owner>/<slug>/...`
+- `import_kaggle_checkpoints()` replaces the notebook-side checkpoint glob
+- Notebook setup cell does `git pull` when the project is already cloned
+
 ## [Kaggle support]
 - Notebook setup cell detects Kaggle / Colab / local; on Kaggle it clones the repo and uses the
   attached dataset directly via `DEEPFAKE_DATA_DIR`

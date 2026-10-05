@@ -121,8 +121,9 @@ The run continues in the background even if you close the browser.
 | 4 | `04_gradcam.ipynb` | dataset **+** output of notebook 02 | GPU | ~10 min |
 
 All notebooks need **Internet = On** (Settings; requires phone verification) to clone this repo.
-The first cell detects Kaggle, points `DEEPFAKE_DATA_DIR` at the attached dataset (nothing is
-downloaded) and, for notebooks 03/04, copies the trained checkpoints from notebook 02's output.
+The first cells detect Kaggle and clone (or `git pull`) this repo. `src/config.py` then finds the
+attached dataset under `/kaggle/input` at any depth (nothing is downloaded) and, for notebooks 03/04,
+copies the trained checkpoints from notebook 02's attached output.
 
 Afterwards:
 - download each executed notebook (*File → Download*) and replace the files in `notebooks/` so the
