@@ -12,5 +12,6 @@ implemented in the code.
 | 03 | [Model Architecture](03_model_architecture.md) | CNN basics, EfficientNet-B0, ResNet-18, single-logit head, freezing |
 | 04 | [Training](04_training.md) | Training loop, BCE loss, Adam, two-phase fine-tuning, scheduler, checkpoints, overfitting |
 | 05 | [Evaluation](05_evaluation.md) | Confusion matrix, precision/recall/F1, ROC-AUC, model comparison, error analysis |
+| 06 | [Grad-CAM](06_gradcam.md) | Explainability, Grad-CAM maths, target layers, interpreting heatmaps, limitations |
 
 New documents are added here as each module is implemented.

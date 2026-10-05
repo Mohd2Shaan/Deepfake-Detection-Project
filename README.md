@@ -90,7 +90,7 @@ pip install -r requirements.txt
 - [x] **Module 3** — Model definitions (`src/model.py`)
 - [x] **Module 4** — Training pipeline (`src/train.py`)
 - [x] **Module 5** — Evaluation & error analysis (`src/evaluate.py`)
-- [ ] **Module 6** — Grad-CAM explainability (`src/gradcam.py`)
+- [x] **Module 6** — Grad-CAM explainability (`src/gradcam.py`)
 - [ ] **Module 7** — Streamlit demo app (`app.py`)
 - [ ] **Module 8** — Report material & viva preparation
 
