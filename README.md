@@ -86,7 +86,7 @@ pip install -r requirements.txt
 
 - [x] **Module 0** — Project scaffolding (structure, requirements, docs)
 - [x] **Module 1** — Dataset loading, preprocessing & augmentation (`src/dataset.py`)
-- [ ] **Module 2** — Exploratory Data Analysis (`notebooks/01_eda.ipynb`)
+- [x] **Module 2** — Exploratory Data Analysis (`notebooks/01_eda.ipynb`)
 - [ ] **Module 3** — Model definitions (`src/model.py`)
 - [ ] **Module 4** — Training pipeline (`src/train.py`)
 - [ ] **Module 5** — Evaluation & error analysis (`src/evaluate.py`)
