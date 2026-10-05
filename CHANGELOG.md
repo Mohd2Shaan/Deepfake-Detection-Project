@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 7] — Streamlit demo app
+- `app.py`: plain Streamlit UI — model dropdown, image upload, REAL/FAKE prediction,
+  confidence, P(fake) bar, Grad-CAM overlay (cached model loading)
+- `docs/07_streamlit_app.md` (how Streamlit reruns work, confidence vs probability, OOD testing)
+- `requirements.txt`: `streamlit>=1.46`
+
 ## [Module 6] — Grad-CAM explainability
 - `src/gradcam.py`: `GradCAMExplainer` (pytorch-grad-cam, binary single-logit targets),
   hand-written `manual_gradcam` (verified identical to the library), heatmap grids for correctly
