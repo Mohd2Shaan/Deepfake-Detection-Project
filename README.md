@@ -85,7 +85,7 @@ pip install -r requirements.txt
 ## Roadmap / Progress
 
 - [x] **Module 0** — Project scaffolding (structure, requirements, docs)
-- [ ] **Module 1** — Dataset loading, preprocessing & augmentation (`src/dataset.py`)
+- [x] **Module 1** — Dataset loading, preprocessing & augmentation (`src/dataset.py`)
 - [ ] **Module 2** — Exploratory Data Analysis (`notebooks/01_eda.ipynb`)
 - [ ] **Module 3** — Model definitions (`src/model.py`)
 - [ ] **Module 4** — Training pipeline (`src/train.py`)
