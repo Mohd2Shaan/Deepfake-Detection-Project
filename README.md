@@ -15,6 +15,8 @@ with **Grad-CAM** heatmaps, and includes a simple **Streamlit** demo app.
 - [Dataset](#dataset)
 - [Project Structure](#project-structure)
 - [Setup](#setup)
+- [Usage](#usage)
+- [Results](#results)
 - [Roadmap / Progress](#roadmap--progress)
 - [Documentation](#documentation)
 - [License](#license)
@@ -60,6 +62,15 @@ Deepfake-Detection-Project/
 ├── data/                 # dataset (git-ignored)
 ├── notebooks/            # EDA, training, evaluation, Grad-CAM notebooks
 ├── src/                  # reusable python modules
+│   ├── config.py         #   paths + hyper-parameters
+│   ├── dataset.py        #   Dataset, transforms, DataLoaders
+│   ├── eda.py            #   EDA helpers
+│   ├── model.py          #   EfficientNet-B0 / ResNet-18 + freezing
+│   ├── train.py          #   two-phase training loop
+│   ├── evaluate.py       #   metrics, ROC, error analysis
+│   └── gradcam.py        #   Grad-CAM heatmaps
+├── scripts/
+│   └── download_dataset.py
 ├── app.py                # Streamlit demo
 ├── checkpoints/          # trained .pth weights (git-ignored)
 ├── outputs/
@@ -82,6 +93,39 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+## Usage
+
+All commands are run from the project root.
+
+| Step | Command | Output |
+|------|---------|--------|
+| 1. Get data | `python scripts/download_dataset.py` | `data/{train,valid,test}/{real,fake}` |
+| 2. Check pipeline | `python -m src.dataset` | split sizes + `outputs/plots/sample_train_batch.png` |
+| 3. EDA | `python -m src.eda --max-per-class 2000` | `outputs/plots/eda_*.png` |
+| 4. Train | `python -m src.train --model efficientnet_b0`<br>`python -m src.train --model resnet18` | `checkpoints/*_best.pth`, training curves |
+| 5. Evaluate | `python -m src.evaluate` | metrics, confusion matrices, ROC, `outputs/model_comparison.csv`, error grids |
+| 6. Grad-CAM | `python -m src.gradcam --checkpoint checkpoints/efficientnet_best.pth` | `outputs/heatmaps/*.png` |
+| 7. Demo | `streamlit run app.py` | web app at http://localhost:8501 |
+
+**Training on Google Colab (recommended):** open `notebooks/02_training.ipynb` in Colab, select a
+GPU runtime and run all cells. Checkpoints are written to Google Drive; if the session disconnects,
+re-run with `--resume`.
+
+Quick CPU smoke test on a small subset:
+
+```bash
+python -m src.train --model efficientnet_b0 --max-per-class 500 --epochs-frozen 1 --epochs-finetune 1 --num-workers 0
+```
+
+## Results
+
+> To be filled in after training on the full dataset (see `outputs/model_comparison.csv`).
+
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
+|-------|----------|-----------|--------|----|---------|
+| EfficientNet-B0 | – | – | – | – | – |
+| ResNet-18 | – | – | – | – | – |
+
 ## Roadmap / Progress
 
 - [x] **Module 0** — Project scaffolding (structure, requirements, docs)
@@ -92,12 +136,25 @@ pip install -r requirements.txt
 - [x] **Module 5** — Evaluation & error analysis (`src/evaluate.py`)
 - [x] **Module 6** — Grad-CAM explainability (`src/gradcam.py`)
 - [x] **Module 7** — Streamlit demo app (`app.py`)
-- [ ] **Module 8** — Report material & viva preparation
+- [x] **Module 8** — Report material & viva preparation
 
 ## Documentation
 
-Every module has a matching theory + implementation note in [`docs/`](docs/README.md).
-Start with [`docs/00_project_overview.md`](docs/00_project_overview.md).
+Every module has a matching theory + implementation note in [`docs/`](docs/README.md):
+
+| Doc | Topic |
+|-----|-------|
+| [00](docs/00_project_overview.md) | Project overview — deepfakes, GANs/StyleGAN, pipeline |
+| [01](docs/01_dataset_and_preprocessing.md) | Dataset, preprocessing & augmentation |
+| [02](docs/02_exploratory_data_analysis.md) | Exploratory data analysis |
+| [03](docs/03_model_architecture.md) | Model architecture (EfficientNet-B0, ResNet-18) |
+| [04](docs/04_training.md) | Training (loss, optimizer, two-phase fine-tuning) |
+| [05](docs/05_evaluation.md) | Evaluation metrics & error analysis |
+| [06](docs/06_gradcam.md) | Grad-CAM explainability |
+| [07](docs/07_streamlit_app.md) | Streamlit demo app |
+| [08](docs/08_report_and_viva.md) | Report outline, literature, viva Q&A |
+
+See [`CHANGELOG.md`](CHANGELOG.md) for the module-by-module history.
 
 ## License
 

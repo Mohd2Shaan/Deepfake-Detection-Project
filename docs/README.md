@@ -14,5 +14,6 @@ implemented in the code.
 | 05 | [Evaluation](05_evaluation.md) | Confusion matrix, precision/recall/F1, ROC-AUC, model comparison, error analysis |
 | 06 | [Grad-CAM](06_gradcam.md) | Explainability, Grad-CAM maths, target layers, interpreting heatmaps, limitations |
 | 07 | [Streamlit App](07_streamlit_app.md) | Demo app flow, caching, confidence, out-of-distribution testing |
+| 08 | [Report & Viva](08_report_and_viva.md) | Report outline, literature review, limitations, slides, viva Q&A |
 
-New documents are added here as each module is implemented.
+Read them in order — each builds on the previous one.

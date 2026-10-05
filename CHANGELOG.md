@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 8] — Report material & viva preparation
+- `docs/08_report_and_viva.md`: report structure, literature list, limitations, future work,
+  slide outline, viva Q&A
+- README: usage table, results placeholder, documentation index
+
 ## [Module 7] — Streamlit demo app
 - `app.py`: plain Streamlit UI — model dropdown, image upload, REAL/FAKE prediction,
   confidence, P(fake) bar, Grad-CAM overlay (cached model loading)
