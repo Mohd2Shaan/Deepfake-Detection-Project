@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 2] — Exploratory Data Analysis
+- `src/eda.py`: image scan (size, mode, corruption via `verify()`, MD5 duplicates), class balance,
+  sample grids, file-size shortcut check, mean face and mean Fourier spectrum
+- `notebooks/01_eda.ipynb` (runs locally or on Colab)
+- `docs/02_exploratory_data_analysis.md`
+
 ## [Module 1] — Dataset, preprocessing & augmentation
 - `src/config.py`: central paths and hyper-parameters (`DEEPFAKE_DATA_DIR` env override)
 - `src/dataset.py`: `DeepfakeDataset`, train/eval transforms, DataLoader helpers, batch sanity grid
