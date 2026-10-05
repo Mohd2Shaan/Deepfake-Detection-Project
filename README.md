@@ -88,7 +88,7 @@ pip install -r requirements.txt
 - [x] **Module 1** — Dataset loading, preprocessing & augmentation (`src/dataset.py`)
 - [x] **Module 2** — Exploratory Data Analysis (`notebooks/01_eda.ipynb`)
 - [x] **Module 3** — Model definitions (`src/model.py`)
-- [ ] **Module 4** — Training pipeline (`src/train.py`)
+- [x] **Module 4** — Training pipeline (`src/train.py`)
 - [ ] **Module 5** — Evaluation & error analysis (`src/evaluate.py`)
 - [ ] **Module 6** — Grad-CAM explainability (`src/gradcam.py`)
 - [ ] **Module 7** — Streamlit demo app (`app.py`)
