@@ -107,18 +107,28 @@ All commands are run from the project root.
 | 6. Grad-CAM | `python -m src.gradcam --checkpoint checkpoints/efficientnet_best.pth` | `outputs/heatmaps/*.png` |
 | 7. Demo | `streamlit run app.py` | web app at http://localhost:8501 |
 
-**Training on Kaggle (recommended — free GPU, dataset already there):**
+### Running the notebooks on Kaggle (recommended — free GPU, dataset already there)
 
-1. Kaggle → *Create → New Notebook* → *File → Import Notebook* → upload `notebooks/02_training.ipynb`.
-2. *Add Input* → search **140k Real and Fake Faces** (by xhlulu) → Add.
-3. Settings: **Accelerator = GPU T4 x2 (or P100)**, **Internet = On** (needs phone verification).
-4. *Save Version → Save & Run All (Commit)* — runs in the background (~3 h for both models,
-   evaluation and Grad-CAM included); you can close the browser.
-5. When finished, open the version's **Output** tab and download `results.zip`
-   (checkpoints + all plots/heatmaps). Unzip it into the project folder.
+Run all four notebooks on Kaggle, in order. For each one: *Create → New Notebook → File →
+Import Notebook*, set the inputs/settings below, then *Save Version → Save & Run All (Commit)*.
+The run continues in the background even if you close the browser.
 
-The first notebook cell detects Kaggle, clones this repo and points `DEEPFAKE_DATA_DIR` at the
-attached dataset, so nothing is downloaded or copied.
+| # | Notebook | Add Input | Accelerator | Time (approx.) |
+|---|----------|-----------|-------------|----------------|
+| 1 | `01_eda.ipynb` | 140k Real and Fake Faces | None (CPU) | ~15 min |
+| 2 | `02_training.ipynb` | 140k Real and Fake Faces | GPU (T4 / P100) | ~2.5–3 h |
+| 3 | `03_evaluation.ipynb` | dataset **+** output of notebook 02 (*Your Work*) | GPU | ~15 min |
+| 4 | `04_gradcam.ipynb` | dataset **+** output of notebook 02 | GPU | ~10 min |
+
+All notebooks need **Internet = On** (Settings; requires phone verification) to clone this repo.
+The first cell detects Kaggle, points `DEEPFAKE_DATA_DIR` at the attached dataset (nothing is
+downloaded) and, for notebooks 03/04, copies the trained checkpoints from notebook 02's output.
+
+Afterwards:
+- download each executed notebook (*File → Download*) and replace the files in `notebooks/` so the
+  repo shows the real outputs and plots,
+- download `results.zip` from notebook 02's *Output* tab (trained models) and unzip it in the project
+  folder to run the Streamlit app locally.
 
 **Training on Google Colab:** open `notebooks/02_training.ipynb` in Colab, select a GPU runtime and
 run all cells. Checkpoints are written to Google Drive; if the session disconnects, re-run with `--resume`.
