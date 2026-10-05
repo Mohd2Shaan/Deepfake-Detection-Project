@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Kaggle support]
+- Notebook setup cell detects Kaggle / Colab / local; on Kaggle it clones the repo and uses the
+  attached dataset directly via `DEEPFAKE_DATA_DIR`
+- `02_training.ipynb` also runs evaluation + Grad-CAM and zips everything into `results.zip`
+- README: step-by-step Kaggle training instructions
+
 ## [Module 8] — Report material & viva preparation
 - `docs/08_report_and_viva.md`: report structure, literature list, limitations, future work,
   slide outline, viva Q&A
