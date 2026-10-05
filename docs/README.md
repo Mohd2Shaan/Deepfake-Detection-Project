@@ -11,5 +11,6 @@ implemented in the code.
 | 02 | [Exploratory Data Analysis](02_exploratory_data_analysis.md) | Balance, sizes, corruption, duplicates, shortcut checks, Fourier spectrum |
 | 03 | [Model Architecture](03_model_architecture.md) | CNN basics, EfficientNet-B0, ResNet-18, single-logit head, freezing |
 | 04 | [Training](04_training.md) | Training loop, BCE loss, Adam, two-phase fine-tuning, scheduler, checkpoints, overfitting |
+| 05 | [Evaluation](05_evaluation.md) | Confusion matrix, precision/recall/F1, ROC-AUC, model comparison, error analysis |
 
 New documents are added here as each module is implemented.
