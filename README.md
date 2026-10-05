@@ -107,9 +107,21 @@ All commands are run from the project root.
 | 6. Grad-CAM | `python -m src.gradcam --checkpoint checkpoints/efficientnet_best.pth` | `outputs/heatmaps/*.png` |
 | 7. Demo | `streamlit run app.py` | web app at http://localhost:8501 |
 
-**Training on Google Colab (recommended):** open `notebooks/02_training.ipynb` in Colab, select a
-GPU runtime and run all cells. Checkpoints are written to Google Drive; if the session disconnects,
-re-run with `--resume`.
+**Training on Kaggle (recommended — free GPU, dataset already there):**
+
+1. Kaggle → *Create → New Notebook* → *File → Import Notebook* → upload `notebooks/02_training.ipynb`.
+2. *Add Input* → search **140k Real and Fake Faces** (by xhlulu) → Add.
+3. Settings: **Accelerator = GPU T4 x2 (or P100)**, **Internet = On** (needs phone verification).
+4. *Save Version → Save & Run All (Commit)* — runs in the background (~3 h for both models,
+   evaluation and Grad-CAM included); you can close the browser.
+5. When finished, open the version's **Output** tab and download `results.zip`
+   (checkpoints + all plots/heatmaps). Unzip it into the project folder.
+
+The first notebook cell detects Kaggle, clones this repo and points `DEEPFAKE_DATA_DIR` at the
+attached dataset, so nothing is downloaded or copied.
+
+**Training on Google Colab:** open `notebooks/02_training.ipynb` in Colab, select a GPU runtime and
+run all cells. Checkpoints are written to Google Drive; if the session disconnects, re-run with `--resume`.
 
 Quick CPU smoke test on a small subset:
 
