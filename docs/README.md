@@ -10,5 +10,6 @@ implemented in the code.
 | 01 | [Dataset & Preprocessing](01_dataset_and_preprocessing.md) | Data layout, leakage, resize/normalise, augmentation, Dataset/DataLoader |
 | 02 | [Exploratory Data Analysis](02_exploratory_data_analysis.md) | Balance, sizes, corruption, duplicates, shortcut checks, Fourier spectrum |
 | 03 | [Model Architecture](03_model_architecture.md) | CNN basics, EfficientNet-B0, ResNet-18, single-logit head, freezing |
+| 04 | [Training](04_training.md) | Training loop, BCE loss, Adam, two-phase fine-tuning, scheduler, checkpoints, overfitting |
 
 New documents are added here as each module is implemented.

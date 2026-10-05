@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Module 4] — Training pipeline
+- `src/train.py`: two-phase transfer learning (frozen head warm-up → fine-tune last 2 blocks),
+  BCEWithLogitsLoss, Adam, ReduceLROnPlateau, best-by-val-loss checkpoint, `--resume` from
+  `<model>_last.pth`, mixed precision on GPU, training-curve plot + JSON history
+- `notebooks/02_training.ipynb`: Colab workflow with checkpoints saved to Google Drive
+- `docs/04_training.md`
+
 ## [Module 3] — Model definitions
 - `src/model.py`: EfficientNet-B0 / ResNet-18 builders with `Linear(*, 1)` heads,
   freeze / unfreeze-last-blocks helpers, frozen-BatchNorm handling, Grad-CAM target layers,
