@@ -1,0 +1,38 @@
+# ---- Dataset & model weights (too large for GitHub) ----
+data/*
+!data/.gitkeep
+checkpoints/*
+!checkpoints/.gitkeep
+*.pth
+*.pt
+
+# ---- Generated outputs (keep folder structure only) ----
+outputs/heatmaps/*
+!outputs/heatmaps/.gitkeep
+outputs/misclassified/*
+!outputs/misclassified/.gitkeep
+outputs/plots/*
+!outputs/plots/.gitkeep
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# ---- Jupyter ----
+.ipynb_checkpoints/
+
+# ---- Editors / OS ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- Personal planning docs ----
+*Kickstart Plan*.pdf
+
+# ---- Kaggle credentials ----
+kaggle.json

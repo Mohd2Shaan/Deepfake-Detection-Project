@@ -1,0 +1,24 @@
+# Core deep learning
+torch>=2.0
+torchvision>=0.15
+
+# Data & evaluation
+numpy
+pandas
+scikit-learn
+opencv-python-headless
+Pillow
+tqdm
+
+# Plotting
+matplotlib
+seaborn
+
+# Explainability
+grad-cam            # pip name of "pytorch-grad-cam"
+
+# Demo app
+streamlit
+
+# Notebooks
+jupyter
