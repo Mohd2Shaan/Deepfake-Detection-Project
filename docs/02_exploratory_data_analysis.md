@@ -81,15 +81,30 @@ are often invisible in pixel space but are exactly the kind of signal a CNN can 
 
 ---
 
-## 3. What to record for the report
+## 3. Results (full dataset, run on Kaggle)
 
-| Item | Expected value |
-|------|----------------|
-| Images per split | train 100k · valid 20k · test 20k |
-| Class ratio | 50 / 50 in every split |
-| Image size | 256 × 256, RGB |
-| Corrupted files | 0 (verify) |
-| Exact duplicates | report the number found |
-| Observations | sample grids look indistinguishable to humans; note any spectrum / file-size differences |
+See the executed notebook [`notebooks/01_eda.ipynb`](../notebooks/01_eda.ipynb) for all plots.
 
-All plots are saved to `outputs/plots/eda_*.png`.
+| Item | Result |
+|------|--------|
+| Images per split | train 100,000 · valid 20,000 · test 20,000 |
+| Class ratio | exactly 50 / 50 in every split |
+| Image size / mode | all 256 × 256, RGB |
+| Corrupted files | 0 |
+| Exact duplicates (MD5) | 0 (within and across splits) |
+| Mean JPEG size | real 28.26 KB (σ 3.88) · fake 27.76 KB (σ 3.86) |
+| Full scan time | ~17 min on Kaggle CPU (140 images/s) |
+
+### Findings
+1. **Clean, balanced data** — no cleaning step needed; accuracy is a fair metric.
+2. **No compression shortcut** — file-size distributions overlap almost completely (difference ≈ 0.13 σ).
+   Fakes are marginally smaller, consistent with slightly smoother GAN textures.
+3. **Visually indistinguishable** — random samples look like normal portraits; some fakes have odd
+   backgrounds (warped objects, partial second faces) that Grad-CAM may later highlight.
+4. **Mean faces** — both classes are aligned the same way; the mean *fake* face is sharper, i.e. StyleGAN
+   outputs are more uniform in pose and alignment than real photos.
+5. **Mean spectra are nearly identical** — no obvious up-sampling peaks in the *average* spectrum at
+   256 px (the bright cross comes from image borders). The discriminative signal is subtle and local, which
+   motivates a CNN instead of a hand-crafted frequency rule.
+6. **Pipeline check passed** — labels match, augmentations are mild; rotation's black corners appear in both
+   classes equally, so they don't leak the label.
