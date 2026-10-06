@@ -172,3 +172,28 @@ histories: `outputs/history_efficientnet.json`, `outputs/history_resnet.json`
   validation accuracy (augmentation + dropout make training harder than validation).
 - No over-fitting for either model; the best checkpoint is the final epoch in both cases.
 - ~7 minutes per epoch on a T4 for both models (disk/data-loading bound); ~3 hours for both runs.
+
+## 12. Experiment — EfficientNet-B0 with 4 unfrozen blocks (notebook 02b)
+
+Because EfficientNet was under-fitting in run 02, it was retrained with `--unfreeze-blocks 4 --lr-finetune 1e-4`
+(no code change — both are existing command-line options). Executed notebook:
+[`notebooks/02b_efficientnet_unfreeze4.ipynb`](../notebooks/02b_efficientnet_unfreeze4.ipynb).
+
+| Model | Unfrozen | Fine-tuned params | Fine-tune lr | Best val loss | Best val acc |
+|-------|----------|-------------------|--------------|---------------|--------------|
+| EfficientNet-B0 (run 02) | last 2 blocks | 1.13 M (28%) | 1e-5 | 0.1581 | 93.71% |
+| **EfficientNet-B0 (run 02b)** | **last 4 blocks** | **3.70 M (92%)** | **1e-4** | **0.0034** | **99.88%** |
+| ResNet-18 (run 02) | `layer3` + `layer4` | 10.49 M (94%) | 1e-5 | 0.0290 | 98.96% |
+
+**Takeaways**
+- How much of the network is fine-tuned (and how fast) matters more than the architecture: with a comparable
+  share of trainable weights, EfficientNet-B0 beats ResNet-18 while having ~3× fewer parameters.
+- Train/val accuracy stay within 0.3% → no over-fitting. The very high accuracy comes from the task itself:
+  all fakes come from a single generator (StyleGAN) with a consistent fingerprint.
+- `ReduceLROnPlateau` halved the lr after the plateau at epochs 6–7; best-by-val-loss selection kept epoch 9
+  rather than the slightly worse epoch 10.
+- Frozen epochs 1–3 are identical to run 02 → the fixed seed makes runs reproducible.
+
+**Final models:** `efficientnet_best.pth` (run 02b) and `resnet_best.pth` (run 02). Run 02's EfficientNet is kept as
+`efficientnet_2blocks.pth` (not picked up by evaluation/app, which only load `*_best.pth`).
+
