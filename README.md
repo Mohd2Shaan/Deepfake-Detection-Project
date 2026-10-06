@@ -116,9 +116,10 @@ The run continues in the background even if you close the browser.
 | # | Notebook | Add Input | Accelerator | Time (approx.) |
 |---|----------|-----------|-------------|----------------|
 | 1 | `01_eda.ipynb` | 140k Real and Fake Faces | None (CPU) | ~15 min |
-| 2 | `02_training.ipynb` | 140k Real and Fake Faces | GPU (T4 / P100) | ~2.5–3 h |
-| 3 | `03_evaluation.ipynb` | dataset **+** output of notebook 02 (*Your Work*) | GPU | ~15 min |
-| 4 | `04_gradcam.ipynb` | dataset **+** output of notebook 02 | GPU | ~10 min |
+| 2 | `02_training.ipynb` | 140k Real and Fake Faces | GPU (T4 / P100) | ~3 h |
+| 2b | `02b_efficientnet_unfreeze4.ipynb` | dataset **+** output of notebook 02 (*Your Work*) | GPU | ~80 min |
+| 3 | `03_evaluation.ipynb` | dataset **+** output of notebook 02b | GPU | ~15 min |
+| 4 | `04_gradcam.ipynb` | dataset **+** output of notebook 02b | GPU | ~10 min |
 
 All notebooks need **Internet = On** (Settings; requires phone verification) to clone this repo.
 The first cells detect Kaggle and clone (or `git pull`) this repo. `src/config.py` then finds the

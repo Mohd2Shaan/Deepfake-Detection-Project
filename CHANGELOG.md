@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Experiment] EfficientNet-B0 with 4 unfrozen blocks
+- New `notebooks/02b_efficientnet_unfreeze4.ipynb`: retrains EfficientNet-B0 with `--unfreeze-blocks 4`
+  (92% of weights, comparable to ResNet's 94%) and `--lr-finetune 1e-4`, because run 02 was under-fitting
+- Run-02 EfficientNet kept for comparison as `efficientnet_2blocks.pth` / `outputs/history_efficientnet_2blocks.json`
+- Notebooks 03/04 now take their models from notebook 02b's output
+
 ## [Results] Training on the full dataset
 - `notebooks/02_training.ipynb` executed on Kaggle (Tesla T4), both models, 3 frozen + 7 fine-tune epochs
 - Best validation accuracy: EfficientNet-B0 93.71% · ResNet-18 98.96%
