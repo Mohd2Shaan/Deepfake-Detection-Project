@@ -143,12 +143,30 @@ python -m src.train --model efficientnet_b0 --max-per-class 500 --epochs-frozen 
 
 ## Results
 
-> To be filled in after training on the full dataset (see `outputs/model_comparison.csv`).
+All numbers on the **held-out test set** (20,000 images, never used for training or model selection).
 
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
-|-------|----------|-----------|--------|----|---------|
-| EfficientNet-B0 | – | – | – | – | – |
-| ResNet-18 | – | – | – | – | – |
+| Model | Fine-tuned | Accuracy | Precision | Recall | F1 | ROC-AUC | Errors |
+|-------|-----------|----------|-----------|--------|----|---------|--------|
+| **EfficientNet-B0** | last 4 blocks, lr 1e-4 | **99.84%** | 99.79% | 99.88% | **99.84%** | **1.0000** | **33** |
+| ResNet-18 | `layer3` + `layer4`, lr 1e-5 | 98.98% | 98.58% | 99.38% | 98.98% | 0.9994 | 205 |
+
+Validation accuracy of all training runs (see [`docs/04_training.md`](docs/04_training.md)):
+EfficientNet-B0 with only 2 blocks fine-tuned reached 93.71% (under-fitting) → 99.88% with 4 blocks;
+ResNet-18 98.96%.
+
+<p>
+<img src="docs/images/training_curves_efficientnet.png" width="49%">
+<img src="docs/images/roc_curve.png" width="35%">
+</p>
+
+**Grad-CAM:** for fakes the model focuses on the inner face (eyes, nose bridge, mouth); for real photos on hair,
+background and surrounding objects. Details in [`docs/06_gradcam.md`](docs/06_gradcam.md).
+
+![Grad-CAM on fake faces](docs/images/gradcam_correct_fake.jpg)
+
+> StyleGAN fakes come from a single generator with a consistent fingerprint, so near-perfect accuracy is expected.
+> Generalisation to other generators (diffusion models, newer GANs) is **not** evaluated — see limitations in
+> [`docs/08_report_and_viva.md`](docs/08_report_and_viva.md).
 
 ## Roadmap / Progress
 

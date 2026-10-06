@@ -110,3 +110,36 @@ Generated grids:
 - A heatmap is a *hint* about the model's reasoning, not a proof.
 
 Possible extensions: Grad-CAM++, Score-CAM, Integrated Gradients.
+
+## 6. Results (EfficientNet-B0, run on Kaggle)
+
+Executed notebook: [`notebooks/04_gradcam.ipynb`](../notebooks/04_gradcam.ipynb)
+
+**Library vs hand-written Grad-CAM:** correlation **0.99999999** — identical maps.
+
+![library vs manual](images/gradcam_library_vs_manual.png)
+
+| What | Where the model looks |
+|------|-----------------------|
+| Correct **fakes** | tight, central: between the eyes, nose bridge, mouth/teeth |
+| Correct **reals** | spread out: hair, background, hats, hands, objects, borders |
+| Real → fake errors | central face, like true fakes (clean frontal portraits) |
+| Fake → real errors | hair, background, edges (fakes with realistic surroundings) |
+
+**Interpretation.** StyleGAN faces are aligned, so the model checks the texture/consistency of the inner face
+where generator artifacts are concentrated; for real photos it relies on natural camera noise and real-world context
+(sharp backgrounds, objects) that StyleGAN renders poorly. No trivial shortcut (watermark, fixed border) is used —
+but the learned cues are specific to StyleGAN's aligned-face style.
+
+**Correctly classified fakes**
+
+![fakes](images/gradcam_correct_fake.jpg)
+
+**Correctly classified reals**
+
+![reals](images/gradcam_correct_real.jpg)
+
+**Misclassified images**
+
+![errors](images/gradcam_misclassified.jpg)
+
