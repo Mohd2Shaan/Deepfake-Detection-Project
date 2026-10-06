@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Results] EfficientNet-B0 with 4 unfrozen blocks
+- `notebooks/02b_efficientnet_unfreeze4.ipynb` executed on Kaggle: best val accuracy **99.88%** (val loss 0.0034, epoch 9),
+  up from 93.71% — now ahead of ResNet-18 (98.96%)
+- `outputs/history_efficientnet.json` is the new run; run 02 kept as `history_efficientnet_2blocks.json`
+- Comparison and discussion in `docs/04_training.md` §12
+
 ## [Experiment] EfficientNet-B0 with 4 unfrozen blocks
 - New `notebooks/02b_efficientnet_unfreeze4.ipynb`: retrains EfficientNet-B0 with `--unfreeze-blocks 4`
   (92% of weights, comparable to ResNet's 94%) and `--lr-finetune 1e-4`, because run 02 was under-fitting
