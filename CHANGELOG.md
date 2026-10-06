@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Results] EDA on the full dataset
+- `notebooks/01_eda.ipynb` executed on Kaggle over all 140,000 images (outputs and plots included)
+- Observations written in the notebook and in `docs/02_exploratory_data_analysis.md` §3:
+  balanced, 0 corrupted, 0 duplicates, no file-size shortcut, near-identical mean spectra
+
 ## [Fix] Kaggle dataset detection
 - Dataset lookup moved into `src/config.py` (`find_kaggle_dataset`) and searches `/kaggle/input` at any
   depth — Kaggle now mounts datasets under `/kaggle/input/datasets/<owner>/<slug>/...`
