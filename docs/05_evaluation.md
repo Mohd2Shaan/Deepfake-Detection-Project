@@ -70,10 +70,10 @@ Both models are drawn on the same plot: `outputs/plots/roc_curve.png`.
 
 Saved as `outputs/model_comparison.csv`:
 
-| Model | Accuracy | Precision | Recall | F1 | ROC-AUC |
-|-------|----------|-----------|--------|----|---------|
-| EfficientNet-B0 | *fill after training* | | | | |
-| ResNet-18 | | | | | |
+| Model | Accuracy | Precision | Recall | F1 | ROC-AUC | Errors / 20,000 |
+|-------|----------|-----------|--------|----|---------|-----------------|
+| **EfficientNet-B0** | **99.84%** | 99.79% | 99.88% | **99.84%** | **1.0000** | **33** |
+| ResNet-18 | 98.98% | 98.58% | 99.38% | 98.98% | 0.9994 | 205 |
 
 Points to discuss in the report:
 - accuracy per parameter (EfficientNet has ~3× fewer parameters),
@@ -111,3 +111,30 @@ This does **not** mean the model detects deepfakes in general:
 - face-swap videos (FaceForensics++) are a different problem altogether.
 
 This generalisation gap should be stated clearly in the Discussion/Limitations section.
+
+## 7. Results (test set, run on Kaggle)
+
+Executed notebook: [`notebooks/03_evaluation.ipynb`](../notebooks/03_evaluation.ipynb)
+
+| | EfficientNet-B0 | ResNet-18 |
+|---|---|---|
+| True real → predicted real (TN) | 9,979 | 9,857 |
+| True real → predicted fake (FP) | 21 | 143 |
+| True fake → predicted real (FN) | 12 | 62 |
+| True fake → predicted fake (TP) | 9,988 | 9,938 |
+
+<p>
+<img src="images/confusion_matrix_efficientnet_b0.png" width="45%">
+<img src="images/roc_curve.png" width="40%">
+</p>
+
+**Findings**
+1. Test accuracy ≈ validation accuracy (99.84% vs 99.88% for EfficientNet) → no over-fitting.
+2. EfficientNet-B0 makes ~6× fewer errors than ResNet-18 with ~3× fewer parameters → chosen as the final model.
+3. ROC-AUC ≈ 1.000: nearly perfect ranking, the result doesn't hinge on the 0.5 threshold.
+4. More false positives than false negatives for both models (real photos flagged as fake).
+5. False positives are clean, studio-like real portraits (plain background, smooth/retouched skin, make-up, flash);
+   false negatives are fakes with busy realistic backgrounds, accessories or unusual lighting.
+
+![Most confident mistakes](images/most_confident_errors_efficientnet.jpg)
+

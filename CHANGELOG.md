@@ -2,6 +2,14 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Results] Test-set evaluation and Grad-CAM
+- `notebooks/03_evaluation.ipynb` executed: EfficientNet-B0 **99.84%** test accuracy (33 errors, AUC 1.0000),
+  ResNet-18 98.98% (205 errors, AUC 0.9994)
+- `notebooks/04_gradcam.ipynb` executed: heatmaps for correct/misclassified images; manual Grad-CAM matches the
+  library (correlation 0.99999999)
+- Result figures in `docs/images/`; results sections added to `docs/05_evaluation.md` and `docs/06_gradcam.md`;
+  README Results table filled in
+
 ## [Results] EfficientNet-B0 with 4 unfrozen blocks
 - `notebooks/02b_efficientnet_unfreeze4.ipynb` executed on Kaggle: best val accuracy **99.88%** (val loss 0.0034, epoch 9),
   up from 93.71% — now ahead of ResNet-18 (98.96%)
