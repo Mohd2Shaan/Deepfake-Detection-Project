@@ -151,8 +151,24 @@ non-determinism).
 | `outputs/history_<model>.json` | loss/acc/lr per epoch |
 | `outputs/plots/training_curves_<model>.png` | curves |
 
-## 11. Expected time (Colab T4, full dataset, batch 32)
+## 11. Results (full dataset, Kaggle Tesla T4)
 
-Roughly 3,125 training batches per epoch. Frozen epochs are faster (no backbone gradients).
-Expect on the order of 5–10 minutes per epoch for EfficientNet-B0 with mixed precision, so a full
-10-epoch run is about 1–1.5 hours per model. Use `--resume` if the session drops.
+Executed notebook: [`notebooks/02_training.ipynb`](../notebooks/02_training.ipynb) ·
+histories: `outputs/history_efficientnet.json`, `outputs/history_resnet.json`
+
+| Epoch | Phase | EfficientNet-B0 val acc | ResNet-18 val acc |
+|-------|-------|------------------------|-------------------|
+| 1 | frozen | 75.8% | 71.5% |
+| 3 | frozen | 78.6% | 74.0% |
+| 4 | fine-tune | 85.3% | 95.0% |
+| 7 | fine-tune | 91.5% | 98.3% |
+| 10 | fine-tune | **93.7%** (val loss 0.158) | **99.0%** (val loss 0.029) |
+
+**What we learn**
+- The frozen phase alone plateaus below 80% — pretrained ImageNet features are not enough; fine-tuning is essential.
+- ResNet-18 benefits much more from phase 2 because its last two blocks contain **94%** of its weights versus
+  **28%** for EfficientNet-B0 (see doc 03 §8). With the same small lr (1e-5), EfficientNet adapts too little.
+- EfficientNet is **under-fitting**: validation loss still decreasing at epoch 10, training accuracy below
+  validation accuracy (augmentation + dropout make training harder than validation).
+- No over-fitting for either model; the best checkpoint is the final epoch in both cases.
+- ~7 minutes per epoch on a T4 for both models (disk/data-loading bound); ~3 hours for both runs.

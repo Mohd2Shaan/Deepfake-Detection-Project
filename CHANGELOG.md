@@ -2,6 +2,11 @@
 
 All notable changes to this project are documented here, module by module.
 
+## [Results] Training on the full dataset
+- `notebooks/02_training.ipynb` executed on Kaggle (Tesla T4), both models, 3 frozen + 7 fine-tune epochs
+- Best validation accuracy: EfficientNet-B0 93.71% · ResNet-18 98.96%
+- Training histories committed in `outputs/history_*.json`; analysis in `docs/04_training.md` §11
+
 ## [Results] EDA on the full dataset
 - `notebooks/01_eda.ipynb` executed on Kaggle over all 140,000 images (outputs and plots included)
 - Observations written in the notebook and in `docs/02_exploratory_data_analysis.md` §3:
