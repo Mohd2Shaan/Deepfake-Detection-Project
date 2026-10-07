@@ -37,5 +37,6 @@ Thumbs.db
 # ---- Kaggle credentials ----
 kaggle.json
 
-# ---- Personal report / presentation (kept local only) ----
-report/
+# ---- Report copies with personal names (kept local only) ----
+report/private/
+report/_render.html
