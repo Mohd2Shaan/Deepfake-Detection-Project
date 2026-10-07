@@ -22,3 +22,6 @@ streamlit>=1.46
 
 # Notebooks
 jupyter
+
+# Report / slides (optional)
+python-pptx
