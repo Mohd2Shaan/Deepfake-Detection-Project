@@ -2,12 +2,6 @@
 
 All notable changes to this project are documented here, module by module.
 
-## [Report] Final report and presentation
-- `report/Deepfake_Detection_Report.pdf` — 24-page report (what / why / how for every stage, results, Grad-CAM,
-  out-of-distribution test, discussion, limitations, future work, references, reproduction guide, viva Q&A)
-- `report/Deepfake_Detection_Presentation.pptx` — 21-slide deck with all result graphs
-- Build scripts: `report/make_figures.py`, `report/build_report.py`, `report/build_slides.py`; source `report/report.html`
-
 ## [Results] Test-set evaluation and Grad-CAM
 - `notebooks/03_evaluation.ipynb` executed: EfficientNet-B0 **99.84%** test accuracy (33 errors, AUC 1.0000),
   ResNet-18 98.98% (205 errors, AUC 0.9994)

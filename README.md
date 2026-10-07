@@ -17,7 +17,6 @@ with **Grad-CAM** heatmaps, and includes a simple **Streamlit** demo app.
 - [Setup](#setup)
 - [Usage](#usage)
 - [Results](#results)
-- [Report & Presentation](#report--presentation)
 - [Roadmap / Progress](#roadmap--progress)
 - [Documentation](#documentation)
 - [License](#license)
@@ -168,22 +167,6 @@ background and surrounding objects. Details in [`docs/06_gradcam.md`](docs/06_gr
 > StyleGAN fakes come from a single generator with a consistent fingerprint, so near-perfect accuracy is expected.
 > Generalisation to other generators (diffusion models, newer GANs) is **not** evaluated — see limitations in
 > [`docs/08_report_and_viva.md`](docs/08_report_and_viva.md).
-
-## Report & Presentation
-
-| File | Content |
-|------|---------|
-| [`report/Deepfake_Detection_Report.pdf`](report/Deepfake_Detection_Report.pdf) | Full project report (24 pages): problem, literature, dataset & EDA, methodology (what / why / how), results, error analysis, Grad-CAM, discussion, limitations, future work, viva Q&A |
-| [`report/Deepfake_Detection_Presentation.pptx`](report/Deepfake_Detection_Presentation.pptx) | 21-slide presentation with all result graphs |
-
-Both are generated from the project outputs:
-
-```bash
-pip install python-pptx
-python report/make_figures.py    # collect result figures + draw diagrams/charts
-python report/build_report.py    # report.html -> PDF (headless Chrome/Edge)
-python report/build_slides.py    # PowerPoint deck
-```
 
 ## Roadmap / Progress
 
